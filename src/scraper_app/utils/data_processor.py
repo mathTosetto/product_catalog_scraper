@@ -45,7 +45,7 @@ class ScrapProcessor:
     def save_to_csv(
         self,
         file_name: str,
-        csv_path: str = "data/02_output/",
+        output_path: str = "data/02_output/",
         **kwargs,
     ) -> None:
         """
@@ -58,13 +58,10 @@ class ScrapProcessor:
         """
         df = self.to_dataframe()
 
-        # Create the directory if it doesn't exist
-        os.makedirs(csv_path, exist_ok=True)
+        os.makedirs(output_path, exist_ok=True)
 
-        # Full path to the CSV file
-        full_path = os.path.join(csv_path, file_name)
+        full_path = os.path.join(output_path, file_name)
 
-        # Save the DataFrame to a CSV file
         df.to_csv(full_path, index=False, **kwargs)
         print(f"Data saved to {full_path}")
 
