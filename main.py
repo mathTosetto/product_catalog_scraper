@@ -2,15 +2,15 @@ import os
 
 from dotenv import load_dotenv
 
-from src.dunnes_app.utils.data_loader import DunnesScraper
-from src.dunnes_app.utils.data_processor import ScrapProcessor
+from src.scraper_app.utils.data_loader import WebScraper
+from src.scraper_app.utils.data_processor import ScrapProcessor
 
 load_dotenv()
 
 if __name__ == "__main__":
     url = os.environ["URL"]
 
-    scraper = DunnesScraper(url)
+    scraper = WebScraper(url)
     driver = scraper.setup_driver()
     scraper.open_website(driver, scraper.url)
     max_page = scraper.get_max_page(driver)
